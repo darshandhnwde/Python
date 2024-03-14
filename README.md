@@ -1,2 +1,2 @@
 # Python
- Basics of python
+Python Basic to Advance
