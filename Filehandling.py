@@ -1,39 +1,61 @@
-# catching errors
-# Try Except block
+# File Detection :
+# this shows that weather it is file or folder and does it exist or not
+import os
+
+path = "/Users/darshandhanwade/Desktop/file"
+
+if os.path.exists(path):
+    print("that location exists ")
+
+    if os.path.isfile(path):
+        print("this is a file")
+
+    elif os.path.isdir(path):
+        print("this is a folder ")
 
 
+else:
+    print("that location dosen't exists ")
+
+
+# COPY FILE :
+# copyfile() = copies content of a file
+# copy() = copyfie() + premission mode + destination can be directory
+# copy2() = cpoy() + cpoies metadata (file's creation and modification time)
+    
+import shutil
+
+shutil.copyfile('Python Intermediate/file.txt','copy.txt') # source and destination argument needed
+
+# copy2() and copy() both need same arguments  
+
+
+# MOVE FILE:
+
+import os
+
+source = "/Users/darshandhanwade/Public/Code Here/Python/Python Intermediate/folder"
+destinstion = "/Users/darshandhanwade/Library/Mobile Documents/com~apple~CloudDocs/deskstop"
 
 try:
-    answer =10/0
-    number = int(input("Enter a number: "))
-    print(number)
-    
-except ZeroDivisionError as err:
-    print(err)
-except ValueError:
-    print("Invalid Input") 
+    if os.path.exists(destinstion):
+        print("there is alredy file ")
+    else:
+        os.replace(source,destinstion)
+        print(source + " was moved")
 
-# Reading Files
-    
-employee_file = open("employee.text","r")
-print(employee_file.readlines()[1])
 
-for employee in employee_file.readlines() :
-    print(employee)
+except FileNotFoundError:
+    print(source + " was not found ") 
 
-print(employee_file.read())
-print(employee_file.readable())
+# DELETE FILE 
+import os
+path = "/Users/darshandhanwade/Public/Code Here/Python/Python Intermediate/emptyfile.txt"
 
-employee_file.close() 
+try:
+    os.remove(path)
 
-# Writing to Files
-
-employee_file = open("employee.text","a") # appending means "a" for adding at the end
-employee_file = open("employee.text","w")
-employee_file = open("employee1.text","a")  # this will creat a new file "employee1.text"
-employee_file.write("oscar - Human Resources")
-employee_file.write("\nRam - Customer Service")
-employee_file.close()
-
+except FileNotFoundError:
+    print("that file was not found ")
 
 

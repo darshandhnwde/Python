@@ -1,23 +1,47 @@
-class Chef:
-    def make_chicken(self):
-        print("The chef makes chicken")
+# Inheritance :
 
-    def make_salad(self):
-        print("The chef makes salad")
+class Parents():
+   
+      
+     def Skin_color(self):
+        print(f"white skin color")
 
-    def make_special_dish(self):
-        print("The chef makes vadapav")
+     def look(self):
+         print(f"similar to their parents")
 
-class ChineseChef(Chef):
-    def make_fried_rice(self):
-        print("The chef makes fried rice")
+class children(Parents):
+    
+    def Occupation(self):
+        print(f"Business")
 
-    def make_special_dish(self):
-        print("The chef makes noodles ")
+parent = Parents()
+print(parent.Skin_color())
+print(parent.look())
+children = children()
+print(children.Occupation())
+print(children.Skin_color()) 
 
-mychef = Chef()
-mychef.make_special_dish()
+# Multiple inheritance 
 
-myChinesechef = ChineseChef()
-myChinesechef.make_special_dish()
-myChinesechef.make_chicken()
+class Employee:
+    def __init__(self, name) -> None:
+        self.name =  name
+
+    def show(self):
+        print(f"name : {self.name}")
+
+class Dance:
+    def __init__(self,dance ) -> None:
+        self.dance = dance
+
+    def show(self):
+        print(f"Dance : {self.dance}")
+
+class EmployeeDance(Dance,Employee): # the class which we give first that class inheritance first
+    def __init__(self, name,dance) -> None:
+        self.name =  name
+        self.dance = dance
+
+ED = EmployeeDance("tom","HIPHOP")
+print(ED.show())        
+print(EmployeeDance.mro())  # method resolution order which show the methods in the class 
